@@ -1,0 +1,136 @@
+------------------------------------------------------------------------------------------------------------------------------------
+This document will come in handy, by providing all the necessary information about the application's REST API.
+------------------------------------------------------------------------------------------------------------------------------------
+
+- The root path of our API, specified in our application's database configuration settings (placed in 'application.properties' file) is: 'http://localhost:8080/online_banking'
+
+- API endpoints are created in accordance to the app's database models:
+    - User
+    - Account
+    - Card
+    - Transaction
+
+- For each model there are all endpoints for CRUD operations available.
+
+- Here are all endpoints listed for each model, with the sample request body for each:
+
+    - Accounts:
+
+        1- '/all'
+            - Lists all records of the account table
+            - No request body is required
+
+        2- '/details/{id}'
+            - Displays the record (account) with the specified id ('id' is the primary key value of the record)
+            - No request body is required
+
+        3- '/add'
+            - Used to add a new record (account) to the database table.
+            - Request body is required. It will contain all 'field-field_value' pairs, in a JSON format:
+                - Sample request:
+                    - Endpoint URL: 'http://localhost:8080/online_banking/accounts/add'
+                    - Request body:
+                        {
+                                 "userId": 1,
+                                 "accountNumber": "HE2354567687890003RO",
+                                 "balance": 124345645.00,
+                                 "accountType": "Student"
+                        }
+
+        4- '/update/{id}'
+            - Used to update an existing record (account)
+            - Request body is required. It will contain all 'field-field_value' pairs, in a JSON format:
+                - Sample request:
+                    - Endpoint URL: 'http://localhost:8080/online_banking/accounts/update/4'
+                    - Request body:
+                     {
+                            "accountId": 4,
+                            "userId": 1,
+                            "accountNumber": "HE2354567687890003RM",
+                            "balance": 1545.00,
+                            "accountType": "Retirement",
+                            "createdAt": "2023-11-06T12:53:39.000+00:00",
+                            "updatedAt": "2023-11-06T12:53:39.000+00:00",
+                    }
+
+        5- '/delete/{id}'
+            - Used to delete an existing record (account)
+            - Request body is required. It will contain all 'field-field_value' pairs, in a JSON format:
+                - Sample request:
+                    - Endpoint URL: 'http://localhost:8080/online_banking/accounts/delete/4'
+                    - Request body:
+                     {
+                            "accountId": 4,
+                            "userId": 1,
+                            "accountNumber": "HE2354567687890003RM",
+                            "balance": 1545.00,
+                            "accountType": "Retirement",
+                            "createdAt": "2023-11-06T12:53:39.000+00:00",
+                            "updatedAt": "2023-11-06T12:53:39.000+00:00",
+                    }
+
+            - As can be noticed, the request is quite similar to the 'update' one, except that the method is different (consequently the endpoint URL, too).
+
+
+    - Cards
+
+        * The principle and implementation of endpoint for 'Cards' component is identical to the one above (for 'Accounts').
+        * Anyway, the same info sections will be reflected for this case, especially the request body samples.
+
+        1- '/all'
+            - Lists all records of the account table
+            - No request body is required
+
+        2- '/details/{id}'
+            - Displays the record (card) with the specified id ('id' is the primary key value of the record)
+            - No request body is required
+
+        3- '/add'
+            - Used to add a new record (card) to the database table.
+            - Request body is required. It will contain all 'field-field_value' pairs, in a JSON format:
+                - Sample request:
+                    - Endpoint URL: 'http://localhost:8080/online_banking/accounts/add'
+                    - Request body:
+                        {
+                                 "userId": 1,
+                                 "accountNumber": "HE2354567687890003RO",
+                                 "balance": 124345645.00,
+                                 "accountType": "Student"
+                        }
+
+        4- '/update/{id}'
+            - Used to update an existing record (card)
+            - Request body is required. It will contain all 'field-field_value' pairs, in a JSON format:
+                - Sample request:
+                    - Endpoint URL: 'http://localhost:8080/online_banking/accounts/update/4'
+                    - Request body:
+                     {
+                         "cardId": 1,
+                         "accountId": 1,
+                         "cardNumber": "HE23545676878922",
+                         "expiryDate": "2033-11-04T20:24:38.000+00:00",
+                         "cvv": 123,
+                         "cardType": "Credit",
+                         "status": "Active",
+                         "createdAt": "2023-11-06T13:47:33.000+00:00"
+                     }
+
+        5- '/delete/{id}'
+            - Used to delete an existing record (account)
+            - Request body is required. It will contain all 'field-field_value' pairs, in a JSON format:
+                - Sample request:
+                    - Endpoint URL: 'http://localhost:8080/online_banking/accounts/delete/4'
+                    - Request body:
+                     {
+                          "cardId": 1,
+                          "accountId": 1,
+                          "cardNumber": "HE23545676878922",
+                          "expiryDate": "2033-11-04T20:24:38.000+00:00",
+                          "cvv": 123,
+                          "cardType": "Credit",
+                          "status": "Active",
+                          "createdAt": "2023-11-06T13:47:33.000+00:00"
+                     }
+
+            - As can be noticed, the request is quite similar to the 'update' one, except that the method is different (consequently the endpoint URL, too).
+
